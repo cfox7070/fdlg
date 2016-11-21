@@ -2,4 +2,8 @@
 <resources>
     <style name="FflgTheme" parent="@android:style/Theme.Holo.Light.Dialog.MinWidth">
 	</style>
+
+    <style name="FileDialogTheme" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

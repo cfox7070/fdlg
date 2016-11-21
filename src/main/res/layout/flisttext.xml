@@ -10,13 +10,15 @@
         android:layout_marginLeft="4px"
         android:layout_marginRight="10dip"
          android:src="@drawable/bg"
-        android:contentDescription="" />
+        android:contentDescription=""
+        android:layout_gravity="center_vertical"/>
     <TextView
         android:id="@+id/f_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20px"
         android:text="folder"
+        android:layout_gravity="center_vertical"
         />
 
 </LinearLayout>

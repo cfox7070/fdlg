@@ -1,10 +1,11 @@
 package com.cfox.fdlg;
-import android.app.Activity;
-import android.app.AlertDialog;
+
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,9 @@ public class FileChooser
 	public enum Mode
 	{open,create}
 
-    private final Activity activity;
 	private final File extStorage;
-    ListView list;
-    Dialog dialog;
+    private ListView list;
+    private Dialog dialog;
     private File currentPath;
 	private Mode mode=Mode.open;
 	private boolean showHidden=false;
@@ -86,12 +86,13 @@ public class FileChooser
     }
     private FileSelectedListener fileListener;
 
-    public FileChooser(Activity activity)
+    public FileChooser(Context context)
 	{
 		//todo: layouts template
-        this.activity = activity;
-        dialog = new Dialog(activity,R.style.FflgTheme);
+        dialog = new Dialog(context,R.style.FileDialogTheme);
 		dialog.setContentView(R.layout.filechooser);
+		fname= (EditText) dialog.findViewById(R.id.fname);
+		fext= (TextView) dialog.findViewById(R.id.fext);
         //list = new ListView(activity);
 		list = (ListView)dialog.findViewById(R.id.flist);
 		list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -114,7 +115,7 @@ public class FileChooser
 				}
 			});
 
-        dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+       // dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 
 		extStorage=Environment.getExternalStorageDirectory();
         refresh(extStorage);
@@ -189,7 +190,6 @@ public class FileChooser
 										.setIcon(android.R.drawable.ic_dialog_alert)
 										.setCancelable(false)
 										.show();
-								//todo: alert
 							}else{
                                 chosenFile.createNewFile();
                                 if (fileListener != null) {
