@@ -59,6 +59,11 @@ public class FileChooser
 		return this;
 	}
 
+	public FileChooser setFileName(String name)
+	{
+        fname.setText(name);
+		return this;
+	}
     // filter on file extension
     
     public FileChooser setExtension(String extension)
